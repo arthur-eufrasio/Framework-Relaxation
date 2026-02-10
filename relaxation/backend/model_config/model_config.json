@@ -1,0 +1,73 @@
+{
+    "generalInformation": {
+        "modelName": "ImplicitRelaxation",
+        "odbOrtCutName": "BIGGER"
+    },
+    "partData": {
+        "createPartInformation": {
+            "Name": "ZOI",
+            "Dimensions":{
+                "x1": -1.465,
+                "x2": -2.865,
+                "z1": 0.0,
+                "z2": 0.8
+            },
+            "eleSize":5e-3
+        },
+        "materialInformation": {
+            "Conductivity": [
+                {"conductivity": 11.57, "temp": 20.0},
+                {"conductivity": 12.83, "temp": 100.0},
+                {"conductivity": 15.99, "temp": 300.0},
+                {"conductivity": 19.15, "temp": 500.0},
+                {"conductivity": 20.73, "temp": 600.0},
+                {"conductivity": 22.31, "temp": 700.0},
+                {"conductivity": 23.89, "temp": 800.0},
+                {"conductivity": 25.47, "temp": 900.0},
+                {"conductivity": 27.05, "temp": 1000.0},
+                {"conductivity": 30.21, "temp": 1200.0},
+                {"conductivity": 30.21, "temp": 1500.0}
+            ],
+            "Density": 8.22e-09,
+            "Elastic": [
+                {"youngs_modulus": 217000.0, "poissons_ratio": 0.3, "temp": 20.0},
+                {"youngs_modulus": 155000.0, "poissons_ratio": 0.33, "temp": 900.0}
+            ],
+            "Plastic": {
+                "A": 1262.0,
+                "B": 1354.0,
+                "n": 0.5,
+                "m": 1.06,
+                "melting_temp": 1340.0,
+                "ref_temp": 20.0
+            },
+            "RateDependent": {
+                "C": 0.006,
+                "epsilon_dot_0": 0.001
+            },
+            "SpecificHeat": [
+                {"specific_heat": 4.406e+08, "temp": 20.0},
+                {"specific_heat": 4.597e+08, "temp": 100.0},
+                {"specific_heat": 4.867e+08, "temp": 300.0},
+                {"specific_heat": 5.209e+08, "temp": 500.0},
+                {"specific_heat": 5.599e+08, "temp": 600.0},
+                {"specific_heat": 6.06e+08, "temp": 650.0},
+                {"specific_heat": 6.109e+08, "temp": 700.0},
+                {"specific_heat": 6.62e+08, "temp": 800.0},
+                {"specific_heat": 6.51e+08, "temp": 900.0},
+                {"specific_heat": 6.73e+08, "temp": 1000.0},
+                {"specific_heat": 7.101e+08, "temp": 1100.0},
+                {"specific_heat": 7.101e+08, "temp": 1200.0}
+            ]
+        }
+    },
+    "assemblyAndSimulationData": {
+        "stepsAndHistoryInformation": {
+            "timePeriod": 10000.0
+        },
+        "convBC":{
+            "sinkTemp": 25.0,
+            "convCoef": 0.01
+        }
+    }
+}
