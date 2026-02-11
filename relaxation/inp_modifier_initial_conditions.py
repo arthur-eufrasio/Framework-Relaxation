@@ -1,8 +1,8 @@
 import json
 
-json_file_path = 'C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/framework_relaxation/relaxation/backend/model_config/data.json'
-inp_source_path = 'C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/framework_relaxation/relaxation/backend/files/inp/ImplicitRelaxation.inp'
-inp_output_path = 'C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/framework_relaxation/relaxation/backend/files/inp/ImplicitRelaxation_modified.inp'
+json_file_path = 'C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/Framework-Relaxation/relaxation/backend/model_config/data.json'
+inp_source_path = 'C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/Framework-Relaxation/relaxation/backend/files/inp/ImplicitRelaxation.inp'
+inp_output_path = 'C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/Framework-Relaxation/relaxation/backend/files/inp/ImplicitRelaxation_modified.inp'
 
 with open(json_file_path, 'r') as f:
     data = json.load(f)
