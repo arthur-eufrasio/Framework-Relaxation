@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+abaqus_acis.log
+*.odb
+*.png
+*.lck
+*.txt
+*.rpy
+*.rec
+*.dat
+*.inp
+*.db
+
