@@ -1,4 +1,3 @@
-# Ignorar diretórios de cache do Python
 __pycache__/
 *.pyc
 abaqus_acis.log
@@ -12,5 +11,5 @@ abaqus_acis.log
 *.inp
 *.db
 
-backend/model_config/data.json
-backend/files/job/*
+relaxation/backend/model_config/data.json
+relaxation/backend/files/*

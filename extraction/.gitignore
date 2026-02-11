@@ -11,5 +11,4 @@ abaqus_acis.log
 *.inp
 *.db
 
-backend/model_config/data.json
-backend/files/job/*
+extraction/backend/data/data.json
