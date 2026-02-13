@@ -35,3 +35,5 @@ with open(inp_source_path, 'r') as f_in, open(inp_output_path, 'w') as f_out:
             
         f_out.write(line)
 
+    print(f"Modified INP file written to: {inp_output_path}")
+
