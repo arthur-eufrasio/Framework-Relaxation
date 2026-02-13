@@ -36,10 +36,15 @@ class DataExtractor:
             self.data[self.odb_name]['nodes'] = {}
 
             self.filter_nodes()
+            DataExtractor.log("  [Extraction] Nodes had been filtered")
             self.filter_elements()
+            DataExtractor.log("  [Extraction] Elements had been filtered")
             self.extract_equivalent_plastic_strain()
+            DataExtractor.log("  [Extraction] Equivalent plastic strain had been extracted")
             self.extract_plastic_strain()
+            DataExtractor.log("  [Extraction] Plastic strain had been extracted")
             self.extract_stress()
+            DataExtractor.log("  [Extraction] Stress had been extracted")
             self.extract_temperature()
 
         self.process_path_data()
