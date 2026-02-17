@@ -42,13 +42,14 @@ class Command:
 
     def create_paths(self):
         self.backend_project_path = os.getenv("BACKEND_PROJECT_PATH", None)
+        self.framework_project_path = os.path.dirname(os.path.dirname(self.backend_project_path))
 
         self.path_dir_config = os.path.join(
-            os.path.dirname(self.backend_project_path), "backend/model_config"
+            self.framework_project_path, "config"
         )
 
-        Command.log("   [Command] The paths to the directories were successfully created.")
-        Command.log("   [Command] Directory Config Path: " + self.path_dir_config)
+        Command.log("[Command] The paths to the directories were successfully created.")
+        Command.log("       - Extraction Dir Config Path: " + self.path_dir_config)
 
     def read_model_config(self):
         path_model_config = os.path.join(
