@@ -54,7 +54,6 @@ class Command:
 
         Command.log("[Command] The paths to the directories were successfully created.")
         Command.log("       - Extraction Dir Config Path: " + self.path_dir_config)
-        Command.log("       - Extraction Data Path: " + self.path_data)
 
     def read_data(self):
         path_config_odb = os.path.join(
