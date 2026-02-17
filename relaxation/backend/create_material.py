@@ -75,3 +75,5 @@ class CreateMaterial():
                 ),
                 temperatureDependency=ON
             )
+
+            material_ref.Expansion(table=((mat_i['Expansion'], ), ))

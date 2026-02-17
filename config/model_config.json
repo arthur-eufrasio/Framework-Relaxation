@@ -53,7 +53,8 @@
                 {"specific_heat": 6.73e+08, "temp": 1000.0},
                 {"specific_heat": 7.101e+08, "temp": 1100.0},
                 {"specific_heat": 7.101e+08, "temp": 1200.0}
-            ]
+            ],
+            "Expansion": 13e-6
         }
     },
     "assemblyAndSimulationData": {
