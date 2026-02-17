@@ -9,11 +9,11 @@ import os
 
 
 class DataExtractor:
-    def __init__(self, config_odb, backend_project_path):
+    def __init__(self, config_odb, backend_project_path, path_dir_config):
         self.config_odb = config_odb
 
         self.backend_project_path = backend_project_path
-        self.path_data = os.path.join(os.path.dirname(self.backend_project_path), "backend/data")
+        self.path_dir_config = path_dir_config
 
         self.odb = None
         self.odb_name = None
@@ -190,7 +190,7 @@ class DataExtractor:
             DataExtractor.log("[Extractor] Saving all extracted data to JSON file...")
 
             output_file_name = "data.json"
-            output_json_path = os.path.join(self.path_data, output_file_name)
+            output_json_path = os.path.join(self.path_dir_config, output_file_name)
 
             with open(output_json_path, "w") as f:
                 json.dump(self.data, f, indent=4)

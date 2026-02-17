@@ -46,12 +46,10 @@ class Command:
 
     def create_paths(self):
         self.backend_project_path = os.getenv("BACKEND_PROJECT_PATH", None)
+        self.framework_project_path = os.path.dirname(os.path.dirname(self.backend_project_path))
 
         self.path_dir_config = os.path.join(
-            os.path.dirname(self.backend_project_path), "backend/extraction_config"
-        )
-        self.path_data = os.path.join(
-            os.path.dirname(self.backend_project_path), "backend/data"
+            self.framework_project_path, "config"
         )
 
         Command.log("[Command] The paths to the directories were successfully created.")
@@ -60,7 +58,7 @@ class Command:
 
     def read_data(self):
         path_config_odb = os.path.join(
-            self.path_dir_config, "config_odb.json"
+            self.path_dir_config, "odb_config.json"
         )
 
         with open(path_config_odb, 'r') as file:
@@ -72,7 +70,7 @@ class Command:
         Command.log("[Command] Beggining extraction....")
 
         config_odb = self.read_data()
-        DataExtractor(config_odb, self.backend_project_path)
+        DataExtractor(config_odb, self.backend_project_path, self.path_dir_config)
 
         Command.log("       [Extraction] The extraction was completed.")
 
