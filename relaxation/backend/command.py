@@ -40,7 +40,7 @@ class Command:
             f.write(msg + "\n")
             f.flush()
 
-    def create_paths(self):
+    def _create_paths(self):
         self.backend_project_path = os.getenv("BACKEND_PROJECT_PATH", None)
         self.framework_project_path = os.path.dirname(os.path.dirname(self.backend_project_path))
 
@@ -51,7 +51,7 @@ class Command:
         Command.log("[Command] The paths to the directories were successfully created.")
         Command.log("       - Extraction Dir Config Path: " + self.path_dir_config)
 
-    def read_model_config(self):
+    def _read_model_config(self):
         path_model_config = os.path.join(
             self.path_dir_config, "model_config.json"
         )
@@ -60,8 +60,18 @@ class Command:
             model_config = json.load(file)
 
         return model_config
+    
+    def _read_odb_config(self):
+        path_odb_config = os.path.join(
+            self.path_dir_config, "odb_config.json"
+        )
 
-    def read_nodes_ele_data(self):
+        with open(path_odb_config, 'r') as file:
+            odb_config = json.load(file)
+
+        return odb_config
+
+    def _read_nodes_ele_data(self):
         path_nodes_ele_data = os.path.join(
             self.path_dir_config, "data.json"
         )
@@ -71,16 +81,25 @@ class Command:
 
         return nodes_ele_data
 
+    def transfer_parameters_config(self, model_config, odb_config):
+        model_config["generalInformation"]["odbOrtCutName"] = list(odb_config.keys())[0]
+        model_config["partData"]["createPartInformation"]["Dimensions"] = odb_config[model_config["generalInformation"]["odbOrtCutName"]]["zoi_coordinates"]
+        model_config["partData"]["createPartInformation"]["eleSize"] = odb_config[model_config["generalInformation"]["odbOrtCutName"]]["ele_size"]
+
+        return model_config
 
     def run_command(self):
         Command.log("[Command] Start model creation...\n")
 
         Command.log("   [Command] Creating path.\n")
-        self.create_paths()
+        self._create_paths()
 
         Command.log("   [Command] Reading required data.\n")
-        data_model = self.read_model_config()
-        data_nodes_ele = self.read_nodes_ele_data()
+        data_model = self._read_model_config()
+        data_odb = self._read_odb_config()
+        data_nodes_ele = self._read_nodes_ele_data()
+
+        data_model = self.transfer_parameters_config(data_model, data_odb)
 
         Command.log("       [Command] Renaming model.\n")
         RenameModel(data_model)

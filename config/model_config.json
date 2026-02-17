@@ -1,18 +1,13 @@
 {
     "generalInformation": {
         "modelName": "ImplicitRelaxation",
-        "odbOrtCutName": "BIGGER"
+        "odbOrtCutName": null
     },
     "partData": {
         "createPartInformation": {
             "Name": "ZOI",
-            "Dimensions":{
-                "x1": -1.465,
-                "x2": -2.865,
-                "z1": 0.0,
-                "z2": 0.8
-            },
-            "eleSize":5e-3
+            "Dimensions": null,
+            "eleSize": null
         },
         "materialInformation": {
             "Conductivity": [
