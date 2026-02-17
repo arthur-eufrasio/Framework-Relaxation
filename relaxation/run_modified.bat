@@ -9,6 +9,8 @@ echo Caminho do arquivo .inp: %input_file%
 
 REM Verifica se o arquivo .inp existe
 if exist "%input_file%" (
+    python "%current_dir%inp_modifier_initial_conditions.py"
+    
     REM Muda para o diretório do job
     cd /d "%job_dir%"
 
