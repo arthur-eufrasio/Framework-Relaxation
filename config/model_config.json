@@ -54,14 +54,81 @@
                 {"specific_heat": 7.101e+08, "temp": 1100.0},
                 {"specific_heat": 7.101e+08, "temp": 1200.0}
             ],
-            "Expansion": 13e-6
+            "Expansion": 13.0e-6,
+            "JohnsonCookDamage": {
+                "Initiation": {
+                    "d1": 0.40583,
+                    "d2": 0.75,
+                    "d3": -1.45,
+                    "d4": 0.04,
+                    "d5": 0.89,
+                    "melting_temp": 1340.0,
+                    "ref_temp": 25.0,
+                    "ref_strain_rate": 0.001
+                },
+                "Evolution": {
+                    "table": [
+                        {"damage": 0.0, "displacement": 0.0},
+                        {"damage": 0.030888524, "displacement": 0.0003298},
+                        {"damage": 0.059978241, "displacement": 0.0006596},
+                        {"damage": 0.087373904, "displacement": 0.0009894},
+                        {"damage": 0.113174168, "displacement": 0.0013192},
+                        {"damage": 0.137471942, "displacement": 0.001649},
+                        {"damage": 0.160354723, "displacement": 0.0019788},
+                        {"damage": 0.181904915, "displacement": 0.0023086},
+                        {"damage": 0.202200122, "displacement": 0.0026384},
+                        {"damage": 0.221313428, "displacement": 0.0029682},
+                        {"damage": 0.239313661, "displacement": 0.003298},
+                        {"damage": 0.256265642, "displacement": 0.0036278},
+                        {"damage": 0.272230417, "displacement": 0.0039576},
+                        {"damage": 0.287265476, "displacement": 0.0042874},
+                        {"damage": 0.301424961, "displacement": 0.0046172},
+                        {"damage": 0.314759862, "displacement": 0.004947},
+                        {"damage": 0.327318199, "displacement": 0.0052768},
+                        {"damage": 0.339145195, "displacement": 0.0056066},
+                        {"damage": 0.350283441, "displacement": 0.0059364},
+                        {"damage": 0.360773045, "displacement": 0.0062662},
+                        {"damage": 0.370651783, "displacement": 0.006596},
+                        {"damage": 0.379955228, "displacement": 0.0069258},
+                        {"damage": 0.388716882, "displacement": 0.0072556},
+                        {"damage": 0.396968297, "displacement": 0.0075854},
+                        {"damage": 0.404739187, "displacement": 0.0079152},
+                        {"damage": 0.412057536, "displacement": 0.008245},
+                        {"damage": 0.418949697, "displacement": 0.0085748},
+                        {"damage": 0.42544049, "displacement": 0.0089046},
+                        {"damage": 0.431553289, "displacement": 0.0092344},
+                        {"damage": 0.437310106, "displacement": 0.0095642},
+                        {"damage": 0.442731672, "displacement": 0.009894},
+                        {"damage": 0.447837511, "displacement": 0.0102238},
+                        {"damage": 0.452646009, "displacement": 0.0105536},
+                        {"damage": 0.457174482, "displacement": 0.0108834},
+                        {"damage": 0.461439237, "displacement": 0.0112132},
+                        {"damage": 0.465455632, "displacement": 0.011543},
+                        {"damage": 0.46923813, "displacement": 0.0118728},
+                        {"damage": 0.472800353, "displacement": 0.0122026},
+                        {"damage": 0.476155128, "displacement": 0.0125324},
+                        {"damage": 0.479314536, "displacement": 0.0128622},
+                        {"damage": 0.482289954, "displacement": 0.013192},
+                        {"damage": 0.485092098, "displacement": 0.0135218},
+                        {"damage": 0.487731058, "displacement": 0.0138516},
+                        {"damage": 0.490216336, "displacement": 0.0141814},
+                        {"damage": 0.492556883, "displacement": 0.0145112},
+                        {"damage": 0.494761128, "displacement": 0.014841},
+                        {"damage": 0.496837007, "displacement": 0.0151708},
+                        {"damage": 0.498791996, "displacement": 0.0155006},
+                        {"damage": 0.500633136, "displacement": 0.0158304},
+                        {"damage": 0.502367056, "displacement": 0.0161602},
+                        {"damage": 0.504, "displacement": 0.01649}
+                    ]
+                }
+            }
         }
     },
     "assemblyAndSimulationData": {
         "stepsAndHistoryInformation": {
             "timePeriod": 10000.0
         },
-        "convBC":{
+        "convBC": {
             "sinkTemp": 25.0,
             "convCoef": 0.01
         }

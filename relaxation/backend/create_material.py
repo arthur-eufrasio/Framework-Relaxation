@@ -11,7 +11,6 @@ from mesh import *
 
 
 class CreateMaterial():
-
     def __init__(self, data_model):
         self.dataInput(data_model)
         self.createMaterial()
@@ -24,58 +23,68 @@ class CreateMaterial():
         self.m = mdb.models[self.ModelName]
         
     def createMaterial(self):
-            self.m.Material(name='DA718')
-            mat_i = self.materialInformation
-            material_ref = self.m.materials['DA718']
+        self.m.Material(name='DA718')
+        mat_i = self.materialInformation
+        material_ref = self.m.materials['DA718']
 
-            material_ref.Density(
-                table=((mat_i['Density'],),)
+        material_ref.Density(
+            table=((mat_i['Density'],),)
+        )
+
+        material_ref.Elastic(
+            table=tuple(
+                (ele['youngs_modulus'], ele['poissons_ratio'], ele['temp'])
+                for ele in mat_i['Elastic']
+            ),
+            temperatureDependency=ON
+        )
+
+        material_ref.Plastic(
+            hardening=JOHNSON_COOK,
+            table=((
+                mat_i['Plastic']['A'],
+                mat_i['Plastic']['B'],
+                mat_i['Plastic']['n'],
+                mat_i['Plastic']['m'],
+                mat_i['Plastic']['melting_temp'],
+                mat_i['Plastic']['ref_temp']
+            ),)
+        )
+
+        material_ref.plastic.RateDependent(
+            type=JOHNSON_COOK,
+            table=((
+                mat_i['RateDependent']['C'],
+                mat_i['RateDependent']['epsilon_dot_0']
+            ),)
+        )
+
+        material_ref.SpecificHeat(
+            table=tuple(
+                (ele['specific_heat'], ele['temp'])
+                for ele in mat_i['SpecificHeat']
+            ),
+            temperatureDependency=ON
+        )
+
+        material_ref.Conductivity(
+            table=tuple(
+                (ele['conductivity'], ele['temp'])
+                for ele in mat_i['Conductivity']
+            ),
+            temperatureDependency=ON
+        )
+
+        material_ref.Expansion(table=((mat_i['Expansion'], ), ))
+
+        jcd = mat_i['JohnsonCookDamage']['Initiation']
+        material_ref.JohnsonCookDamageInitiation(
+            table=((jcd['d1'], jcd['d2'], jcd['d3'], jcd['d4'], jcd['d5'], jcd['melting_temp'], jcd['ref_temp'], jcd['ref_strain_rate']), )
             )
-
-            material_ref.Elastic(
-                table=tuple(
-                    (ele['youngs_modulus'], ele['poissons_ratio'], ele['temp'])
-                    for ele in mat_i['Elastic']
-                ),
-                temperatureDependency=ON
-            )
-
-            material_ref.Plastic(
-                hardening=JOHNSON_COOK,
-                table=((
-                    mat_i['Plastic']['A'],
-                    mat_i['Plastic']['B'],
-                    mat_i['Plastic']['n'],
-                    mat_i['Plastic']['m'],
-                    mat_i['Plastic']['melting_temp'],
-                    mat_i['Plastic']['ref_temp']
-                ),)
-            )
-
-            material_ref.plastic.RateDependent(
-                type=JOHNSON_COOK,
-                table=((
-                    mat_i['RateDependent']['C'],
-                    mat_i['RateDependent']['epsilon_dot_0']
-                ),)
-            )
-
-            material_ref.SpecificHeat(
-                table=tuple(
-                    (ele['specific_heat'], ele['temp'])
-                    for ele in mat_i['SpecificHeat']
-                ),
-                temperatureDependency=ON
-            )
-
-            material_ref.Conductivity(
-                table=tuple(
-                    (ele['conductivity'], ele['temp'])
-                    for ele in mat_i['Conductivity']
-                ),
-                temperatureDependency=ON
-            )
-
-            material_ref.Expansion(table=((mat_i['Expansion'], ), ))
-
-            # ADD DAMAGE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        material_ref.johnsonCookDamageInitiation.DamageEvolution(
+            softening=TABULAR, 
+            table=tuple(
+                (ele['damage'], ele['displacement'])
+                for ele in mat_i['JohnsonCookDamage']['Evolution']['table']
+            ), 
+            type=DISPLACEMENT)
