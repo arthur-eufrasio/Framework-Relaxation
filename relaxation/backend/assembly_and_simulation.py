@@ -27,6 +27,8 @@ class AssemblyModel():
         self.PartName = str(data_model['partData']['createPartInformation']['Name'])
         self.TimePeriod = data_model['assemblyAndSimulationData']['stepsAndHistoryInformation']['timePeriod']
         self.Dimensions = data_model['partData']['createPartInformation']['Dimensions']
+        self.xPoints = sorted([self.Dimensions['x1'], self.Dimensions['x2']])
+        self.yPoints = sorted([self.Dimensions['z1'], self.Dimensions['z2']])
         self.convCoef = data_model['assemblyAndSimulationData']['convBC']['convCoef']
         self.sinkTemp = data_model['assemblyAndSimulationData']['convBC']['sinkTemp']
         self.eleSize = data_model['partData']['createPartInformation']['eleSize']
@@ -45,10 +47,10 @@ class AssemblyModel():
             timePeriod=self.TimePeriod, initialInc=1e-5, maxNumInc=1000, minInc=1e-6)
 
     def setFilmCondition(self):
-        xMin = self.Dimensions['x2'] - self.eleSize
-        xMax = self.Dimensions['x1'] + self.eleSize
-        yMin = self.Dimensions['z2'] - self.eleSize * 1.5
-        yMax = self.Dimensions['z2'] + self.eleSize
+        xMin = self.xPoints[0] - self.eleSize
+        xMax = self.xPoints[1] + self.eleSize
+        yMin = self.yPoints[1] - self.eleSize * 1.5
+        yMax = self.yPoints[1] + self.eleSize * 0.5
         zMin = -self.eleSize
         zMax = +self.eleSize
 
@@ -67,10 +69,10 @@ class AssemblyModel():
             self.m.rootAssembly.surfaces['topElements'+self.PartName])
         
     def setBoundaryConditionsAndPredefinedFields(self):
-        xMin = self.Dimensions['x1'] - self.eleSize * 1.5
-        xMax = self.Dimensions['x1'] + self.eleSize * 0.5
-        yMin = self.Dimensions['z1'] - self.eleSize 
-        yMax = self.Dimensions['z2'] + self.eleSize
+        xMin = self.xPoints[0] - self.eleSize * 1.5
+        xMax = self.xPoints[0] + self.eleSize * 0.5
+        yMin = self.yPoints[0] - self.eleSize 
+        yMax = self.yPoints[1] + self.eleSize
         zMin = -self.eleSize
         zMax = +self.eleSize
 
@@ -80,12 +82,12 @@ class AssemblyModel():
             yMin= yMin, yMax= yMax
             )
         self.m.rootAssembly.Surface(face2Elements= right_elements, name='rightElements'+self.PartName)
-        rightNodesSet = self.m.rootAssembly.Set(name='rightNodesSet', nodes= self.m.rootAssembly.surfaces['rightElementsZOI'].nodes)
+        rightNodesSet = self.m.rootAssembly.Set(name='rightNodesSet', nodes= self.m.rootAssembly.surfaces['rightElements'+self.PartName].nodes)
 
-        xMin = self.Dimensions['x2'] - self.eleSize * 0.5
-        xMax = self.Dimensions['x2'] + self.eleSize * 1.5
-        yMin = self.Dimensions['z1'] - self.eleSize 
-        yMax = self.Dimensions['z2'] + self.eleSize
+        xMin = self.xPoints[1] - self.eleSize * 0.5
+        xMax = self.xPoints[1] + self.eleSize * 1.5
+        yMin = self.yPoints[0] - self.eleSize 
+        yMax = self.yPoints[1] + self.eleSize
         zMin = -self.eleSize
         zMax = +self.eleSize
 
@@ -95,7 +97,7 @@ class AssemblyModel():
             yMin= yMin, yMax= yMax
             )
         self.m.rootAssembly.Surface(face4Elements= left_elements, name='leftElements'+self.PartName)
-        leftNodesSet = self.m.rootAssembly.Set(name='leftNodesSet', nodes= self.m.rootAssembly.surfaces['leftElementsZOI'].nodes)
+        leftNodesSet = self.m.rootAssembly.Set(name='leftNodesSet', nodes= self.m.rootAssembly.surfaces['leftElements'+self.PartName].nodes)
         
         all_y_coords = []
 
@@ -105,10 +107,10 @@ class AssemblyModel():
 
         all_y_coords.sort()
         
-        xMin = self.Dimensions['x2'] - self.eleSize * 0.5
-        xMax = self.Dimensions['x1'] + self.eleSize * 0.5
-        yMin = self.Dimensions['z1'] - self.eleSize 
-        yMax = self.Dimensions['z1'] + all_y_coords[1] + (all_y_coords[2] - all_y_coords[1]) / 2.0
+        xMin = self.xPoints[1] - self.eleSize * 0.5
+        xMax = self.xPoints[0] + self.eleSize * 0.5
+        yMin = self.yPoints[0] - self.eleSize 
+        yMax = self.yPoints[0] + all_y_coords[1] + (all_y_coords[2] - all_y_coords[1]) / 2.0
  
         zMin = -self.eleSize
         zMax = +self.eleSize
@@ -119,13 +121,13 @@ class AssemblyModel():
             yMin= yMin, yMax= yMax
             )
         self.m.rootAssembly.Surface(face1Elements= bottom_elements, name='bottomElements'+self.PartName)
-        bottomNodesSet = self.m.rootAssembly.Set(name='bottomNodesSet', nodes= self.m.rootAssembly.surfaces['bottomElementsZOI'].nodes)
+        bottomNodesSet = self.m.rootAssembly.Set(name='bottomNodesSet', nodes= self.m.rootAssembly.surfaces['bottomElements'+self.PartName].nodes)
 
         allNodesSet =self.m.rootAssembly.Set(name='allNodesSet', 
                                 nodes= self.eulerianInst.nodes.getByBoundingBox(
-                                xMin= self.Dimensions['x2'] - self.eleSize, xMax= self.Dimensions['x1'] + self.eleSize,
+                                xMin= self.xPoints[1] - self.eleSize, xMax= self.xPoints[0] + self.eleSize,
                                 zMin= - self.eleSize, zMax= + self.eleSize,
-                                yMin= self.Dimensions['z1'] - self.eleSize, yMax=self.Dimensions['z2'] + self.eleSize 
+                                yMin= self.yPoints[0] - self.eleSize, yMax=self.yPoints[1] + self.eleSize 
                                 ))
 
         self.m.DisplacementBC(amplitude=UNSET, createStepName='Initial', distributionType=UNIFORM, 
