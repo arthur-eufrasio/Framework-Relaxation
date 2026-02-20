@@ -1,6 +1,6 @@
 {
     "BIGGER": {
-        "odb_path": "S:/Arthur/01_Simulations/07_CEL_RS/Files_BIGGER/BIGGER.odb",
+        "odb_path": "S:/Arthur/01_Simulations/07_CEL_RS-big_files/02_Files_Bigger/BIGGER.odb",
         "step_index": 1,
         "step_name": "unloadingTool",
         "frame_target": 40,
