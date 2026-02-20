@@ -77,3 +77,5 @@ class CreateMaterial():
             )
 
             material_ref.Expansion(table=((mat_i['Expansion'], ), ))
+
+            # ADD DAMAGE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
