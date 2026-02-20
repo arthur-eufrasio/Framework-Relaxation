@@ -77,14 +77,14 @@ class CreateMaterial():
 
         material_ref.Expansion(table=((mat_i['Expansion'], ), ))
 
-        jcd = mat_i['JohnsonCookDamage']['Initiation']
-        material_ref.JohnsonCookDamageInitiation(
-            table=((jcd['d1'], jcd['d2'], jcd['d3'], jcd['d4'], jcd['d5'], jcd['melting_temp'], jcd['ref_temp'], jcd['ref_strain_rate']), )
-            )
-        material_ref.johnsonCookDamageInitiation.DamageEvolution(
-            softening=TABULAR, 
-            table=tuple(
-                (ele['damage'], ele['displacement'])
-                for ele in mat_i['JohnsonCookDamage']['Evolution']['table']
-            ), 
-            type=DISPLACEMENT)
+        # jcd = mat_i['JohnsonCookDamage']['Initiation']
+        # material_ref.JohnsonCookDamageInitiation(
+        #     table=((jcd['d1'], jcd['d2'], jcd['d3'], jcd['d4'], jcd['d5'], jcd['melting_temp'], jcd['ref_temp'], jcd['ref_strain_rate']), )
+        #     )
+        # material_ref.johnsonCookDamageInitiation.DamageEvolution(
+        #     softening=TABULAR, 
+        #     table=tuple(
+        #         (ele['damage'], ele['displacement'])
+        #         for ele in mat_i['JohnsonCookDamage']['Evolution']['table']
+        #     ), 
+        #     type=DISPLACEMENT)
