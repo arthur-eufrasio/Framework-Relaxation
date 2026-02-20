@@ -69,8 +69,8 @@ class AssemblyModel():
             self.m.rootAssembly.surfaces['topElements'+self.PartName])
         
     def setBoundaryConditionsAndPredefinedFields(self):
-        xMin = self.xPoints[0] - self.eleSize * 1.5
-        xMax = self.xPoints[0] + self.eleSize * 0.5
+        xMin = self.xPoints[1] - self.eleSize * 1.5
+        xMax = self.xPoints[1] + self.eleSize * 0.5
         yMin = self.yPoints[0] - self.eleSize 
         yMax = self.yPoints[1] + self.eleSize
         zMin = -self.eleSize
@@ -84,8 +84,8 @@ class AssemblyModel():
         self.m.rootAssembly.Surface(face2Elements= right_elements, name='rightElements'+self.PartName)
         rightNodesSet = self.m.rootAssembly.Set(name='rightNodesSet', nodes= self.m.rootAssembly.surfaces['rightElements'+self.PartName].nodes)
 
-        xMin = self.xPoints[1] - self.eleSize * 0.5
-        xMax = self.xPoints[1] + self.eleSize * 1.5
+        xMin = self.xPoints[0] - self.eleSize * 0.5
+        xMax = self.xPoints[0] + self.eleSize * 1.5
         yMin = self.yPoints[0] - self.eleSize 
         yMax = self.yPoints[1] + self.eleSize
         zMin = -self.eleSize
@@ -107,11 +107,10 @@ class AssemblyModel():
 
         all_y_coords.sort()
         
-        xMin = self.xPoints[1] - self.eleSize * 0.5
-        xMax = self.xPoints[0] + self.eleSize * 0.5
+        xMin = self.xPoints[0] - self.eleSize * 0.5
+        xMax = self.xPoints[1] + self.eleSize * 0.5
         yMin = self.yPoints[0] - self.eleSize 
         yMax = self.yPoints[0] + all_y_coords[1] + (all_y_coords[2] - all_y_coords[1]) / 2.0
- 
         zMin = -self.eleSize
         zMax = +self.eleSize
 
@@ -125,7 +124,7 @@ class AssemblyModel():
 
         allNodesSet =self.m.rootAssembly.Set(name='allNodesSet', 
                                 nodes= self.eulerianInst.nodes.getByBoundingBox(
-                                xMin= self.xPoints[1] - self.eleSize, xMax= self.xPoints[0] + self.eleSize,
+                                xMin= self.xPoints[0] - self.eleSize, xMax= self.xPoints[1] + self.eleSize,
                                 zMin= - self.eleSize, zMax= + self.eleSize,
                                 yMin= self.yPoints[0] - self.eleSize, yMax=self.yPoints[1] + self.eleSize 
                                 ))
