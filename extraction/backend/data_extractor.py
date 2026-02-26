@@ -44,8 +44,9 @@ class DataExtractor:
             self.extract_plastic_strain()
             DataExtractor.log("  [Extraction] Plastic strain had been extracted")
             self.extract_stress()
-            DataExtractor.log("  [Extraction] Stress had been extracted")
+            DataExtractor.log("  [Extraction] Stresses had been extracted")
             self.extract_temperature()
+            DataExtractor.log("  [Extraction] Temperatures had been extracted")
 
         self.process_path_data()
 
