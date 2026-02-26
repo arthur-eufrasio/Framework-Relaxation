@@ -5,6 +5,7 @@
         "step_name": "orthogonalCutting",
         "frame_target": 30,
         "instance_name": "EULERIAN-1",
+        "node_set_name": "SETINITWP",
         "zoi_coordinates": {
             "x1": -4.105,
             "x2": -3.105,

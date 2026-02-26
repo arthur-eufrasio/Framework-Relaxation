@@ -66,12 +66,13 @@ class DataExtractor:
         self.step_name = str(self.odb_config["step_name"])
         self.frame_target = self.odb_config["frame_target"]
         self.instance_name = str(self.odb_config["instance_name"])
+        self.node_set_name = str(self.odb_config["node_set_name"])
         self.tolerance = self.odb_config["zoi_coordinates"]["tolerance"]
 
         self.zoi_coordinates = self.odb_config["zoi_coordinates"]
 
     def filter_nodes(self):
-        instance = self.odb.rootAssembly.instances[self.instance_name]
+        self.instance = self.odb.rootAssembly.instances[self.instance_name]
         zoi = self.zoi_coordinates
         tolerance = self.tolerance
         valid_labels = []
@@ -87,7 +88,7 @@ class DataExtractor:
         min_z = z_values[0] - tolerance
         max_z = z_values[1] + tolerance
 
-        for node in instance.nodes:
+        for node in self.instance.nodes:
             coords = node.coordinates
             if (min_x <= coords[0] <= max_x and
                     min_y <= coords[1] <= max_y and
@@ -99,11 +100,10 @@ class DataExtractor:
         self.zoi_nodeLabels = tuple(valid_labels)
 
     def filter_elements(self):
-        instance = self.odb.rootAssembly.instances[self.instance_name]
         valid_nodes_set = set(self.zoi_nodeLabels)
         valid_elements = []
 
-        for element in instance.elements:
+        for element in self.instance.elements:
             valid_element_nodes = [
                 node for node in element.connectivity if node in valid_nodes_set
             ]
@@ -160,7 +160,8 @@ class DataExtractor:
     def extract_temperature(self):
         step = self.odb.steps[self.step_name]
         frame = step.frames[self.frame_target]
-        fdo = frame.fieldOutputs['NT11']
+        node_set = self.instance.elementSets[self.node_set_name]
+        fdo = frame.fieldOutputs['NT11'].getSubset(region=node_set)
 
         for value in fdo.values:
             if value.nodeLabel in self.zoi_nodeLabels and value.instance.name == self.instance_name:
