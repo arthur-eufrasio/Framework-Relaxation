@@ -129,17 +129,17 @@ class AssemblyModel():
                                 yMin= self.yPoints[0] - self.eleSize, yMax=self.yPoints[1] + self.eleSize 
                                 ))
 
-        self.m.DisplacementBC(amplitude=UNSET, createStepName='Initial', distributionType=UNIFORM, 
-            fieldName='', localCsys=None, name='leftBC', region= leftNodesSet, 
-            u1=SET, u2=UNSET, ur3=UNSET
-            )
-        self.m.DisplacementBC(amplitude=UNSET, createStepName='Initial', distributionType=UNIFORM, 
-            fieldName='', localCsys=None, name='rightBC', region= rightNodesSet, 
-            u1=SET, u2=UNSET, ur3=UNSET
-            )
+        # self.m.DisplacementBC(amplitude=UNSET, createStepName='Initial', distributionType=UNIFORM, 
+        #     fieldName='', localCsys=None, name='leftBC', region= leftNodesSet, 
+        #     u1=SET, u2=UNSET, ur3=UNSET
+        #     )
+        # self.m.DisplacementBC(amplitude=UNSET, createStepName='Initial', distributionType=UNIFORM, 
+        #     fieldName='', localCsys=None, name='rightBC', region= rightNodesSet, 
+        #     u1=SET, u2=UNSET, ur3=UNSET
+        #     )
         self.m.DisplacementBC(amplitude=UNSET, createStepName='Initial', distributionType=UNIFORM, 
             fieldName='', localCsys=None, name='bottomBC', region= bottomNodesSet, 
-            u1=UNSET, u2=SET, ur3=UNSET
+            u1=SET, u2=SET, ur3=UNSET
             )
         
         di = self.NodesInfo
