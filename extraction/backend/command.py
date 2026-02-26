@@ -27,7 +27,7 @@ class Command:
         if os.path.exists(log_path):
             os.remove(log_path)
 
-        Command.log("[Command] Iniciando execução...\n")
+        Command.log("[Command] Starting execution...\n")
 
         self.create_paths()
         self.start_extractor()
@@ -66,7 +66,7 @@ class Command:
         return config_odb
 
     def start_extractor(self):
-        Command.log("[Command] Beggining extraction....")
+        Command.log("[Command] Beginning extraction....")
 
         config_odb = self.read_data()
         DataExtractor(config_odb, self.backend_project_path, self.path_dir_config)
