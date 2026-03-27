@@ -1,13 +1,19 @@
 import json
+import os
 
-json_file_path = 'C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/Framework-Relaxation/config/data.json'
-inp_source_path = 'C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/Framework-Relaxation/relaxation/backend/files/inp/ImplicitRelaxation.inp'
-inp_output_path = 'C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/Framework-Relaxation/relaxation/backend/files/inp/ImplicitRelaxation_modified.inp'
+base_dir = os.getcwd()
+backend_dir = base_dir.split("\\")[:-1]
+backend_dir = "\\".join(backend_dir)
+
+json_file_path = os.path.join(backend_dir, 'config', 'data.json')
+inp_source_path = os.path.join(backend_dir, 'relaxation', 'backend', 'files', 'inp', 'ImplicitRelaxation.inp')
+inp_output_path = os.path.join(backend_dir, 'relaxation', 'backend', 'files', 'inp', 'ImplicitRelaxation_modified.inp')
 
 with open(json_file_path, 'r') as f:
     data = json.load(f)
 
-elements_data = data["BIGGER"]["elements"]
+odb_name = list(data.keys())[0]
+elements_data = data[odb_name]["elements"]
 
 stress_lines = []
 hardening_lines = []
