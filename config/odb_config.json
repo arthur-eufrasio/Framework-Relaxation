@@ -5,7 +5,6 @@
         "step_name": "unloadingTool",
         "frame_target": 40,
         "instance_name": "EULERIAN-1",
-        "node_set_name": "SETEULERIANDOMAIN",
         "zoi_coordinates": {
             "x1": -2.65,
             "x2": -1.9,

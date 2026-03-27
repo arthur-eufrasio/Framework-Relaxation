@@ -66,7 +66,6 @@ class DataExtractor:
         self.step_name = str(self.odb_config["step_name"])
         self.frame_target = self.odb_config["frame_target"]
         self.instance_name = str(self.odb_config["instance_name"])
-        self.node_set_name = str(self.odb_config["node_set_name"])
         self.tolerance = self.odb_config["zoi_coordinates"]["tolerance"]
 
         self.zoi_coordinates = self.odb_config["zoi_coordinates"]
@@ -160,8 +159,7 @@ class DataExtractor:
     def extract_temperature(self):
         step = self.odb.steps[self.step_name]
         frame = step.frames[self.frame_target]
-        node_set = self.instance.elementSets[self.node_set_name]
-        fdo = frame.fieldOutputs['NT11'].getSubset(region=node_set)
+        fdo = frame.fieldOutputs['NT11']
 
         for value in fdo.values:
             if value.nodeLabel in self.zoi_nodeLabels and value.instance.name == self.instance_name:
