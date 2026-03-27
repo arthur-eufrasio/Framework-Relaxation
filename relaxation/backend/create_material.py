@@ -75,7 +75,7 @@ class CreateMaterial():
             temperatureDependency=ON
         )
 
-        material_ref.Expansion(table=((mat_i['Expansion'], ), ))
+        # material_ref.Expansion(table=((mat_i['Expansion'], ), ))
 
         # jcd = mat_i['JohnsonCookDamage']['Initiation']
         # material_ref.JohnsonCookDamageInitiation(

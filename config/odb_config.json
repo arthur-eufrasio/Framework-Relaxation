@@ -1,18 +1,18 @@
 {
-    "BIGGER": {
-        "odb_path": "C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/temp/h01_vc300_tool_moving.odb",
-        "step_index": 0,
-        "step_name": "orthogonalCutting",
-        "frame_target": 30,
+    "BIGGER_h002": {
+        "odb_path": "S:/Arthur/01_Simulations/07_CEL_RS-big_files/04_Bigger_CEL_h002_vc300/BIGGER_h002.odb",
+        "step_index": 1,
+        "step_name": "unloadingTool",
+        "frame_target": 40,
         "instance_name": "EULERIAN-1",
-        "node_set_name": "SETINITWP",
+        "node_set_name": "SETEULERIANDOMAIN",
         "zoi_coordinates": {
-            "x1": -4.105,
-            "x2": -3.105,
+            "x1": -2.65,
+            "x2": -1.9,
             "y1": -0.01,
             "y2": 0.01,
             "z1": 0.0,
-            "z2": 0.8,
+            "z2": 0.88,
             "tolerance": 2.5e-3
         },
         "ele_size": 5e-3
