@@ -1,17 +1,17 @@
 {
     "BIGGER_h002": {
-        "odb_path": "S:/Arthur/01_Simulations/07_CEL_RS-big_files/04_Bigger_CEL_h002_vc300/BIGGER_h002.odb",
-        "step_index": 1,
-        "step_name": "unloadingTool",
-        "frame_target": 40,
-        "instance_name": "EULERIAN-1",
+        "odb_path": "C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/abaqusWD/comparisonExplicitStandard/explicitUnloading.odb",
+        "step_index": 0,
+        "step_name": "orthCutLoads",
+        "frame_target": 100,
+        "instance_name": "WP-1",
         "zoi_coordinates": {
-            "x1": -2.65,
-            "x2": -1.9,
+            "x1": 0.0,
+            "x2": 1.0,
             "y1": -0.01,
             "y2": 0.01,
             "z1": 0.0,
-            "z2": 0.88,
+            "z2": 0.2,
             "tolerance": 2.5e-3
         },
         "ele_size": 5e-3

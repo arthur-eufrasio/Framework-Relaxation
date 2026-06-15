@@ -121,8 +121,8 @@ class DataExtractor:
     def extract_equivalent_plastic_strain(self):
         step = self.odb.steps[self.step_name]
         frame = step.frames[self.frame_target]
-        field_name = 'PEEQ_ASSEMBLY_EULERIAN-1_DA718_PENG20-1'
-        fdo = frame.fieldOutputs[field_name]
+        field_name = 'PEEQ'
+        fdo = frame.fieldOutputs[field_name].getSubset(position=CENTROID)
 
         for value in fdo.values:
             if value.elementLabel in self.zoi_elementLabels:
@@ -134,8 +134,8 @@ class DataExtractor:
     def extract_plastic_strain(self):
         step = self.odb.steps[self.step_name]
         frame = step.frames[self.frame_target]
-        field_name = 'PE_ASSEMBLY_EULERIAN-1_DA718_PENG20-1'
-        fdo = frame.fieldOutputs[field_name]
+        field_name = 'PE'
+        fdo = frame.fieldOutputs[field_name].getSubset(position=CENTROID)
 
         for value in fdo.values:
             if value.elementLabel in self.zoi_elementLabels:
@@ -147,7 +147,7 @@ class DataExtractor:
     def extract_stress(self):
         step = self.odb.steps[self.step_name]
         frame = step.frames[self.frame_target]
-        fdo = frame.fieldOutputs['S_ASSEMBLY_EULERIAN-1_DA718_PENG20-1']
+        fdo = frame.fieldOutputs['S'].getSubset(position=CENTROID)
 
         for value in fdo.values:
             if value.elementLabel in self.zoi_elementLabels:

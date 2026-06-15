@@ -18,9 +18,9 @@ if exist "%input_file%" (
 
     REM Roda o job
     abaqus job=%job_name% input="%input_file_modified%"
+    pause
 
 ) else (
     echo O arquivo %input_file% nao foi encontrado.
+    pause
 )
-
-pause
