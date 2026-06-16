@@ -1,6 +1,6 @@
 {
     "BIGGER_h002": {
-        "odb_path": "C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/abaqusWD/comparisonExplicitStandard/explicitUnloading.odb",
+        "odb_path": "C:/Users/adam-jd1r2h3ttnmecz9/Desktop/arthur/abaqusWD/comparisonExplicitStandard/explicit_last.odb",
         "step_index": 0,
         "step_name": "orthCutLoads",
         "frame_target": 100,
