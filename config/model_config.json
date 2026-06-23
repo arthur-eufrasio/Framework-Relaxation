@@ -54,7 +54,7 @@
                 {"specific_heat": 7.101e+08, "temp": 1100.0},
                 {"specific_heat": 7.101e+08, "temp": 1200.0}
             ],
-            "Expansion": 13.0e-6,
+            "Expansion": 15.0e-6,
             "JohnsonCookDamage": {
                 "Initiation": {
                     "d1": 0.40583,

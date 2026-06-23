@@ -1,13 +1,13 @@
 {
     "BIGGER_h002": {
-        "odb_path": "S:/Arthur/01_Simulations/07_CEL_RS-big_files/04_Bigger_CEL_h002_vc300/BIGGER_h002.odb",
+        "odb_path": "S:/Arthur/01_Simulations/17_EXPANSION_INVESTIGATION/expansion_BIGGER_h002vc300.odb",
         "step_index": 1,
         "step_name": "unloadingTool",
         "frame_target": 40,
         "instance_name": "EULERIAN-1",
         "zoi_coordinates": {
-            "x1": -2.65,
-            "x2": -1.9,
+            "x1": -2.8,
+            "x2": -2.0,
             "y1": -0.01,
             "y2": 0.01,
             "z1": 0.0,
