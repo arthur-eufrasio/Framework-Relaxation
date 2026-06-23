@@ -130,7 +130,7 @@
         },
         "convBC": {
             "sinkTemp": 25.0,
-            "convCoef": 0.01
+            "convCoef": 0.023
         }
     }
 }
