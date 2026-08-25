@@ -7,7 +7,7 @@ ABAQUS_CMD_PATH = r'C:\SIMULIA\Commands\abq2023.bat'
 def main():
     os.environ["BACKEND_PROJECT_PATH"] = os.path.join(os.getcwd(), "relaxation/backend")
     
-    abaqus_command = f'"{ABAQUS_CMD_PATH}" cae startup="relaxation/backend/command.py"'
+    abaqus_command = f'"{ABAQUS_CMD_PATH}" cae noGUI="relaxation/backend/command.py"'
 
     try:
         result = subprocess.run(

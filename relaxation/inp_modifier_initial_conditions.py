@@ -1,9 +1,7 @@
 import json
 import os
 
-base_dir = os.getcwd()
-backend_dir = base_dir.split("\\")[:-1]
-backend_dir = "\\".join(backend_dir)
+backend_dir = os.getcwd()
 
 json_file_path = os.path.join(backend_dir, 'config', 'data.json')
 inp_source_path = os.path.join(backend_dir, 'relaxation', 'backend', 'files', 'inp', 'ImplicitRelaxation.inp')
